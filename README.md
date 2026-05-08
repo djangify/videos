@@ -1,6 +1,6 @@
 # 📹 Djangify Videos
 
-A lightweight, self-hosted video tutorial platform built with Django. It powers [videos.djangify.com](https://videos.djangify.com) — a short-form tutorial library for users of the [Djangify eCommerce Builder](https://github.com/djangify/ebuilder).
+A lightweight, self-hosted video tutorial platform built with Django. It powers [videos.djangify.com](https://videos.djangify.com) — a short-form tutorial library for users of the [Djangify eCommerce Builder](https://djangify.com).
 
 ---
 

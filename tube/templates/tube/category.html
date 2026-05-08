@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} – Djangify Videos{% endblock %}
+
+{% block content %}
+
+  <header class="page-header">
+    <h1>{{ category.name }}</h1>
+    {% if category.description %}
+    <p>{{ category.description }}</p>
+    {% endif %}
+    <a href="{% url 'tube:list' %}" class="back-link">← All Videos</a>
+  </header>
+
+  {% if videos %}
+    <div class="grid">
+      {% for video in videos %}
+      <article class="card">
+
+        <a href="{{ video.get_absolute_url }}" class="card-thumb">
+          {% if video.thumbnail %}
+            <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+          {% endif %}
+          <div class="play-btn">
+            <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </a>
+
+        <div class="card-body">
+          <h2 class="card-title">
+            <a href="{{ video.get_absolute_url }}">{{ video.title }}</a>
+          </h2>
+          {% if video.description %}
+          <p class="card-desc">{{ video.description|truncatewords:20 }}</p>
+          {% endif %}
+        </div>
+
+        <div class="card-footer">
+          <a href="{{ video.get_absolute_url }}" class="btn">Watch →</a>
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="empty">
+      <p>No videos in this category yet.</p>
+    </div>
+  {% endif %}
+
+{% endblock %}

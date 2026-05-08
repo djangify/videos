@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.title }} – Djangify Videos{% endblock %}
+
+{% block content %}
+
+  <div class="video-player">
+    <video controls preload="metadata">
+      <source src="/library/{{ video.filename }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="video-meta">
+    <h1>{{ video.title }}</h1>
+    {% if video.category %}
+    <a href="{% url 'tube:category' video.category.slug %}">{{ video.category.name }}</a>
+    {% endif %}
+  </div>
+
+  {% if video.description %}
+  <div class="video-desc">
+    {{ video.description }}
+  </div>
+  {% endif %}
+
+  {% if related_videos %}
+  <div>
+    <h2 class="related-title">More in {{ video.category.name }}</h2>
+    <div class="grid">
+      {% for related in related_videos %}
+      <article class="card">
+
+        <a href="{{ related.get_absolute_url }}" class="card-thumb">
+          {% if related.thumbnail %}
+            <img src="{{ related.thumbnail.url }}" alt="{{ related.title }}">
+          {% endif %}
+          <div class="play-btn">
+            <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </a>
+
+        <div class="card-body">
+          <h3 class="card-title">
+            <a href="{{ related.get_absolute_url }}">{{ related.title }}</a>
+          </h3>
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock %}

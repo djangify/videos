@@ -17,6 +17,8 @@
         <a href="{{ video.get_absolute_url }}" class="card-thumb">
           {% if video.thumbnail %}
             <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+          {% elif video.get_youtube_thumbnail_url %}
+            <img src="{{ video.get_youtube_thumbnail_url }}" alt="{{ video.title }}">
           {% endif %}
           <div class="play-btn">
             <svg width="22" height="22" fill="white" viewBox="0 0 24 24">

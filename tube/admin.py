@@ -24,11 +24,20 @@ class VideoAdmin(admin.ModelAdmin):
                     "title",
                     "slug",
                     "description",
-                    "filename",
-                    "thumbnail",
                     "category",
                     "published",
                 )
+            },
+        ),
+        (
+            "Video Source",
+            {
+                "description": "Provide either a server filename OR a YouTube URL — not both.",
+                "fields": (
+                    "filename",
+                    "youtube_url",
+                    "thumbnail",
+                ),
             },
         ),
     )

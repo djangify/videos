@@ -4,12 +4,27 @@
 
 {% block content %}
 
+  {% if video.get_youtube_embed_url %}
+  <div class="video-player">
+    <div style="aspect-ratio:16/9;width:100%;">
+      <iframe
+        src="{{ video.get_youtube_embed_url }}"
+        style="width:100%;height:100%;display:block;border:0;"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  {% elif video.filename %}
   <div class="video-player">
     <video controls preload="metadata">
       <source src="/library/{{ video.filename }}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+  {% endif %}
 
   <div class="video-meta">
     <h1>{{ video.title }}</h1>
@@ -34,6 +49,8 @@
         <a href="{{ related.get_absolute_url }}" class="card-thumb">
           {% if related.thumbnail %}
             <img src="{{ related.thumbnail.url }}" alt="{{ related.title }}">
+          {% elif related.get_youtube_thumbnail_url %}
+            <img src="{{ related.get_youtube_thumbnail_url }}" alt="{{ related.title }}">
           {% endif %}
           <div class="play-btn">
             <svg width="22" height="22" fill="white" viewBox="0 0 24 24">

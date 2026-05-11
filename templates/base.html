@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}Djangify Videos{% endblock %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Djangify Videos">
+  <meta property="og:title"       content="{% block og_title %}Djangify Videos{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Short tutorials and walkthroughs for the Djangify platform by founder Diane Corriette.{% endblock %}">
+  <meta property="og:url"         content="{% block og_url %}https://videos.djangify.com{% endblock %}">
+  <meta property="og:image"       content="{% block og_image %}https://videos.djangify.com/static/images/djangify-ecommerce-builder-videos.webp{% endblock %}">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="description"        content="{% block meta_description %}Short tutorials and walkthroughs for the Djangify platform.{% endblock %}">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,7 +39,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .navbar-brand {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #ffffff;
     }
@@ -316,13 +326,43 @@
       .layout { padding: 1.5rem 1rem; }
       .page-header h1 { font-size: 1.4rem; }
     }
+    /* ── Navbar links group ───────────────────────────────────── */
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    /* ── Footer links ─────────────────────────────────────────── */
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: #d6c6b3;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #ffffff; }
+
+    /* ── Mobile nav ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .navbar-links { gap: 0.75rem; }
+      .navbar-link { font-size: 0.8rem; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <a href="/" class="navbar-brand">📹 Djangify <span>Videos</span></a>
-    <a href="/" class="navbar-link">All Videos</a>
+    <a href="/" class="navbar-brand">Djangify <span>Support Videos</span></a>
+    <div class="navbar-links">
+      <a href="/" class="navbar-link">All Videos</a>
+      <a href="https://www.djangify.com" target="_blank" rel="noopener" class="navbar-link">Djangify</a>
+      <a href="https://www.djangify.com/docs/" target="_blank" rel="noopener" class="navbar-link">Documentation</a>
+    </div>
   </nav>
 
   <div class="layout">
@@ -349,6 +389,11 @@
   </div>
 
   <footer>
+    <div class="footer-links">
+      <a href="https://www.djangify.com" target="_blank" rel="noopener">Djangify</a>
+      <a href="https://www.djangify.com/docs/" target="_blank" rel="noopener">Documentation</a>
+      <a href="/">All Videos</a>
+    </div>
     &copy; {% now "Y" %} Djangify. All rights reserved.
   </footer>
 

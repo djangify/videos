@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}{{ video.title }} – Djangify Videos{% endblock %}
+{% block og_title %}{{ video.title }} – Djangify Videos{% endblock %}
+{% block og_description %}{{ video.description|striptags|truncatewords:30 }}{% endblock %}
+{% block og_url %}https://videos.djangify.com{{ video.get_absolute_url }}{% endblock %}
+{% block og_image %}{% if video.thumbnail %}https://videos.djangify.com{{ video.thumbnail.url }}{% elif video.get_youtube_thumbnail_url %}{{ video.get_youtube_thumbnail_url }}{% endif %}{% endblock %}
 
 {% block content %}
 

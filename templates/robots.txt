@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://videos.djangify.com/sitemap.xml

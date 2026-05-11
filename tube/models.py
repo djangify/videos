@@ -45,9 +45,10 @@ class Video(models.Model):
         upload_to="thumbnails/",
         blank=True,
     )
+    order = models.PositiveIntegerField(default=0) 
 
     class Meta:
-        ordering = ["-created"]
+        ordering = ["order", "-created"]
 
     def __str__(self):
         return self.title

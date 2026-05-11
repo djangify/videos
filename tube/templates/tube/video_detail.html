@@ -35,9 +35,15 @@
 
   {% if video.description %}
   <div class="video-desc">
-    {{ video.description }}
+    {{ video.description|safe }}
   </div>
   {% endif %}
+
+    <!--  BANNER AD HERE -->
+  <a href="https://www.djangify.com" target="_blank" rel="noopener" class="djangify-banner">
+    {% load static %}
+    <img src="{% static 'images/diane-corriette-full-stack-developer-djangify.webp' %}" alt="Djangify – a simple, affordable home to sell your knowledge without the tech headaches">
+  </a>
 
   {% if related_videos %}
   <div>

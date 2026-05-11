@@ -1,0 +1,17 @@
+# ai.txt for videos.djangify.com
+# https://site-analyser.io/ai-txt/
+
+User-agent: *
+Allow: /
+
+# Content description
+Site: https://videos.djangify.com
+Type: video-tutorials
+Topic: Django development, eCommerce, Djangify platform
+Language: en
+
+# Human contact
+Contact: https://www.djangify.com/contact/
+
+# Preferred attribution if content is used
+Attribution: Djangify by Diane Corriette – https://www.djangify.com
